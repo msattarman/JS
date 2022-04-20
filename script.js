@@ -1,11 +1,11 @@
 // Lesson02 Типы данных, операторы, методы, свойства. 
 
-let title = 'JS';
-let screens = 'Простые, Сложные, Интерактивные';
-let screenPrice = 3;
-let rollback = 25;
-let fullPrice = 1000000;
-let adaptive = true;
+const title = 'JS';
+const screens = 'Простые, Сложные, Интерактивные';
+const screenPrice = 3;
+const rollback = 25;
+const fullPrice = 1000000;
+const adaptive = true;
 
 console.log(typeof title);
 console.log(typeof fullPrice);
