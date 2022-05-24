@@ -4,19 +4,38 @@ let title = prompt("Как называется ваш проект?");
 let screens = prompt("Какие типы экранов нужно разработать?");
 let screenPrice = +prompt("Сколько будет стоить данная работа?");
 let adaptive = confirm("Нужен ли адаптив на сайте?");
+
+let rollback = 10;
+let allServicePrices;  
+let fullPrice;
+let servicePercentPrice;
+
 let service1 = prompt("Какой дополнительный тип услуги №1 нужен?");
 let servicePrice1 = +prompt("Сколько это будет стоить?");
 let service2 = prompt("Какой дополнительный тип услуги нужен?");
 let servicePrice2 = +prompt("Сколько это будет стоить?");
-let rollback = 10;  
-let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-let servicePercentPrice = (fullPrice - (fullPrice * (rollback / 100)));
 
-const showTypeOf = function(variable) {
+const getAllServicePrice = function () {
+  return servicePrice1 + servicePrice2;
+};
+
+const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
 };
 
-const getRollBackMessage = function(price) {
+const getFullPrice = function () {
+  return screenPrice + allServicePrices;
+};
+
+const getServicePercentPrice = function () {
+  return fullPrice - (fullPrice * (rollback / 100));
+};
+
+const getTitle = function () {
+  return title.trim()[0].toUpperCase() + title.trim().substr(1).toLowerCase();
+};
+
+const getRollBackMessage = function (price) {
   if ( price >= 30000 ) { 
     return "Даем скидку в 10%";
   } else if (price >= 15000 && price < 30000) {
@@ -27,6 +46,11 @@ const getRollBackMessage = function(price) {
     return "Что то пошло не так..."; 
   }
 };
+
+allServicePrices = getAllServicePrice();
+fullPrice = getFullPrice();
+servicePercentPrice = getServicePercentPrice();
+title = getTitle();
 
 showTypeOf(title);
 showTypeOf(screenPrice);
@@ -40,4 +64,5 @@ console.log(typeof adaptive);
 console.log(screens.length);
 console.log(servicePercentPrice);
 
-console.log("Стоимость верстки экранов " + screenPrice + " рублей");
+console.log("Стоимость верстки экранов " + screenPrice + " рублей" + " " +
+ "Стоимость разработки сайта " + fullPrice + " рублей");
