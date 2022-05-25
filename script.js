@@ -11,13 +11,17 @@ let servicePercentPrice;
 let service1;
 let service2;
 
-const asking = function() {
+const isNumber = function (num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
+};
+
+const asking = function () {
   title = prompt("Как называется ваш проект?", "Калькулятор верстки");
   screens = prompt("Какие типы экранов нужно разработать?", "Простые, сложные");
 
   screenPrice = prompt("Сколько будет стоить данная работа?");
 
-  while (isNaN(screenPrice) || screenPrice.trim() === "" || screenPrice === null) {
+  while (!isNumber(screenPrice)) {
     screenPrice = prompt("Сколько будет стоить данная работа?");
   }
 
